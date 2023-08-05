@@ -19,12 +19,12 @@ const App = () => {
   }, []);
 
   let loggeduser;
+
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem("loggedBlogAppUser");
 
     if (loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON);
-      // loggeduser = user;
       setUser(user);
 
       blogService.setToken(user.Token);
@@ -41,7 +41,6 @@ const App = () => {
       });
 
       window.localStorage.setItem("loggedBlogAppUser", JSON.stringify(user));
-      // console.log(user);
       blogService.setToken(user.token);
       setUser(user);
       setUsername("");
@@ -74,7 +73,7 @@ const App = () => {
         setSuccessMessage(
           `a new blog ${returnedBlog.title} by ${returnedBlog.author} added`,
         );
-        // console.log(returnedBlog.user);
+
         setTimeout(() => {
           setSuccessMessage(null);
         }, 5000);
@@ -124,11 +123,8 @@ const App = () => {
 
   loggeduser = window.localStorage.getItem("loggedBlogAppUser");
   const name = JSON.parse(loggeduser)?.name;
-  // console.log(name);
 
   blogs.sort((a, b) => a.likes - b.likes);
-
-  // console.log(blogs);
 
   const toggleFn = (fn) => {
     fn();
