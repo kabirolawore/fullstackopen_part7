@@ -12,8 +12,6 @@ const App = () => {
   const [blogs, setBlogs] = useState([]);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  // const [errorMessage, setErrorMessage] = useState(null);
-  // const [successMessage, setSuccessMessage] = useState(null);
   const [user, setUser] = useState(null);
 
   const dispatch = useDispatch();
@@ -50,12 +48,8 @@ const App = () => {
       dispatch(showNotification("Login Successful"));
       setUsername("");
       setPassword("");
-      // console.log();
     } catch (exception) {
       dispatch(showNotification("Wrong username or password"));
-      // setTimeout(() => {
-      //   setErrorMessage(null);
-      // }, 5000);
     }
   };
 
@@ -80,10 +74,6 @@ const App = () => {
             `a new blog ${returnedBlog.title} by ${returnedBlog.author} added`,
           ),
         );
-
-        // setTimeout(() => {
-        //   setSuccessMessage(null);
-        // }, 5000);
       }
     });
   };
@@ -99,7 +89,6 @@ const App = () => {
   const LoginForm = () => (
     <div>
       <h2>Log in to Application</h2>
-      {/* <Notification className="error" message={errorMessage} /> */}
       <Notification />
       <form onSubmit={handleLogin}>
         <div>
@@ -148,7 +137,6 @@ const App = () => {
       {user && (
         <div>
           <h2>blogs</h2>
-          {/* <Notification className="success" message={successMessage} /> */}
           <Notification />
           <div>
             {user.name} logged in <button onClick={handleLogout}>logout</button>
