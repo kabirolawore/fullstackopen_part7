@@ -1,0 +1,7 @@
+.vscode
+bloglist-frontend/node_modules
+backend/node_modules
+backend/.env
+backend/login.rest
+5.2 bloglist-front step2
+7.9 auto code formatting/backend/.prettierrc.json
