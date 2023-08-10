@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import blogService from "../services/blogs";
 import { useDispatch } from "react-redux";
 import { showNotification } from "../reducers/notificationReducer";
@@ -7,9 +7,6 @@ import { createBlog } from "../reducers/blogReducer";
 
 const BlogForm = ({ setUser }) => {
   //
-  const [newTitle, setNewTitle] = useState("");
-  const [newAuthor, setNewAuthor] = useState("");
-  const [newUrl, setNewUrl] = useState("");
 
   const blogFormRef = useRef();
   const dispatch = useDispatch();
@@ -34,10 +31,7 @@ const BlogForm = ({ setUser }) => {
 
     const newBlog = await blogService.create(blogObject);
     dispatch(createBlog(newBlog));
-    console.log(newBlog?.user);
     setUser(newBlog?.user);
-
-    console.log(newBlog);
 
     if (newBlog.title) {
       dispatch(
@@ -52,37 +46,18 @@ const BlogForm = ({ setUser }) => {
     <div>
       <Togglable buttonLabel="create new blog" ref={blogFormRef}>
         <h2>Create new</h2>
-
         <form onSubmit={addBlog}>
           <div>
             title:
-            <input
-              id="title"
-              name="title"
-              value={newTitle}
-              onChange={({ target }) => setNewTitle(target.value)}
-              placeholder="write title"
-            />
+            <input id="title" name="title" placeholder="write title" />
           </div>
           <div>
             author:
-            <input
-              id="author"
-              name="author"
-              value={newAuthor}
-              onChange={({ target }) => setNewAuthor(target.value)}
-              placeholder="write author"
-            />
+            <input id="author" name="author" placeholder="write author" />
           </div>
           <div>
             url:
-            <input
-              id="url"
-              name="url"
-              value={newUrl}
-              onChange={({ target }) => setNewUrl(target.value)}
-              placeholder="write url"
-            />
+            <input id="url" name="url" placeholder="write url" />
           </div>
           <button id="create-button" type="submit">
             create
