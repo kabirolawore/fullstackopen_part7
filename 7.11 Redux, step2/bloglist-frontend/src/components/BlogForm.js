@@ -31,10 +31,8 @@ const BlogForm = ({ setUser }) => {
 
     const newBlog = await blogService.create(blogObject);
     dispatch(createBlog(newBlog));
-    console.log(newBlog?.user);
-    setUser(newBlog?.user);
 
-    console.log(newBlog);
+    setUser(newBlog?.user);
 
     if (newBlog.title) {
       dispatch(

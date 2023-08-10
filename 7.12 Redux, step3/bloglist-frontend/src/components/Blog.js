@@ -10,8 +10,6 @@ const Blog = ({ blog, user }) => {
   const dispatch = useDispatch();
   const blogs = useSelector((state) => state.blogs);
 
-  console.log("blogs", blogs);
-
   const blogStyle = {
     paddingTop: 10,
     paddingBottom: 10,
