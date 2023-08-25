@@ -9,7 +9,7 @@ const Menu = () => {
   };
   //
   return (
-    <div>
+    <>
       <div>
         <Link style={padding} to='/'>
           anecdotes
@@ -24,7 +24,7 @@ const Menu = () => {
         </Link>
       </div>
       <br />
-    </div>
+    </>
   );
 };
 
@@ -222,6 +222,7 @@ const App = () => {
       <h1>Software anecdotes</h1>
       <Menu />
       <Notification message={notification} />
+
       <Routes>
         <Route
           path='/anecdotes/:id'
@@ -236,6 +237,7 @@ const App = () => {
           }
         />
       </Routes>
+
       <Footer />
     </div>
   );
