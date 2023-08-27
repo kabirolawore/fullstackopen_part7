@@ -18,6 +18,8 @@ const blogSlice = createSlice({
         likes: blogTochange.likes + 1,
       };
 
+      // console.log("reducer", JSON.parse(JSON.stringify(action.payload)));
+
       return state.map((blog) => (blog.id !== id ? blog : changedBlog));
     },
     deleteBlog: (state, action) => {
@@ -28,7 +30,6 @@ const blogSlice = createSlice({
       state.push(action.payload);
     },
     setBlogs: (state, action) => {
-      // console.log(JSON.parse(JSON.stringify(action.payload)));
       return action.payload;
     },
   },

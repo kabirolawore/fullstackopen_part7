@@ -7,10 +7,11 @@ import LoginForm from "./components/LoginForm";
 import { getUser } from "./reducers/userReducer";
 import Blogs from "./components/Blogs";
 import Users from "./components/Users";
-import ErrorPage from "./components/ErrorPage";
+// import ErrorPage from "./components/ErrorPage";
 
 import { Routes, Route, Link } from "react-router-dom";
 import User from "./components/User";
+import Blog from "./components/Blog";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -61,6 +62,8 @@ const App = () => {
               <Route path="/" element={<Blogs user={user} />} />
               <Route path="/users" element={<Users />} />
               <Route path="/users/:id" element={<User />} />
+              <Route path="/blogs" element={<Blogs user={user} />} />
+              <Route path="/blogs/:id" element={<Blog />} />
             </Routes>
           </div>
         )}
