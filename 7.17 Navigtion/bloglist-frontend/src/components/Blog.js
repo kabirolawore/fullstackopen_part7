@@ -70,7 +70,7 @@ const Blog = () => {
             like
           </button>
           <p>
-            added by <strong>{blog?.user.name}</strong>
+            added by <strong>{blog?.user.username}</strong>
           </p>
           <br />
           <p>
