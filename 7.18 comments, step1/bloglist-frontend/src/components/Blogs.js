@@ -15,6 +15,7 @@ const Blogs = ({ user }) => {
     borderWidth: 1,
     color: "green",
     marginBottom: 5,
+    paddingLeft: 4,
   };
 
   return (

@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { increaseBlogLike, deleteBlog } from "../reducers/blogReducer";
 import blogService from "../services/blogs";
 import { useParams, useNavigate } from "react-router-dom";
-import commentService from "../services/comments";
+// import commentService from "../services/comments";
 
 //
 const Blog = () => {
@@ -15,9 +15,12 @@ const Blog = () => {
     return [...state.blogs].filter((blog) => blog.id === id);
   });
   const user = useSelector((state) => state.user.username);
+  const comments = useSelector((state) => {
+    return [...state.comments].filter((comments) => comments.blogId === id);
+  });
 
-  // console.log("blogs", blog);
-  // console.log("user", user);
+  // console.log("comments", comments);
+  // console.log("id", id);
 
   const buttonStyle = {
     backgroundColor: "#4dabf7",
@@ -76,6 +79,11 @@ const Blog = () => {
           <br />
           <div>
             <h5>comments</h5>
+            <ul>
+              {comments.map((comment) => (
+                <li key={comment.id}>{comment.comment}</li>
+              ))}
+            </ul>
           </div>
           <br />
           <div>
