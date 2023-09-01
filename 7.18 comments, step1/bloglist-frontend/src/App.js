@@ -7,11 +7,13 @@ import LoginForm from "./components/LoginForm";
 import { getUser } from "./reducers/userReducer";
 import Blogs from "./components/Blogs";
 import Users from "./components/Users";
+import commentService from "./services/comments";
 // import ErrorPage from "./components/ErrorPage";
 
 import { Routes, Route, Link } from "react-router-dom";
 import User from "./components/User";
 import Blog from "./components/Blog";
+import { setComments } from "./reducers/commentReducer";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -19,6 +21,7 @@ const App = () => {
 
   useEffect(() => {
     blogService.getAll().then((blogs) => dispatch(setBlogs(blogs)));
+    commentService.getAll().then((comments) => dispatch(setComments(comments)));
   }, []);
 
   useEffect(() => {

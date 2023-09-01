@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { increaseBlogLike, deleteBlog } from "../reducers/blogReducer";
 import blogService from "../services/blogs";
 import { useParams, useNavigate } from "react-router-dom";
+import commentService from "../services/comments";
 
 //
 const Blog = () => {
@@ -70,18 +71,27 @@ const Blog = () => {
             like
           </button>
           <p>
-            added by <strong>{blog?.user.name}</strong>
+            added by <strong>{blog?.user.username}</strong>
           </p>
           <br />
-          <p>
-            {blog?.user.username === user ? (
-              <button onClick={() => handleDelete()} style={deleteStyle}>
-                delete
-              </button>
-            ) : (
-              ""
-            )}
-          </p>
+          <div>
+            <h5>comments</h5>
+          </div>
+          <br />
+          <div>
+            <div>
+              {blog?.user.username === user ? (
+                <div>
+                  <button onClick={() => handleDelete()} style={deleteStyle}>
+                    delete
+                  </button>{" "}
+                  <span>post</span>
+                </div>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>
