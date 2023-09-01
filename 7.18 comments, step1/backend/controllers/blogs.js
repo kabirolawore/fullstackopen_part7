@@ -3,6 +3,7 @@ const Blog = require("../models/blog");
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 const { tokenExtractor, userExtractor } = require("../utils/middleware");
+const Comment = require("../models/comment");
 
 // get all blogs
 blogsRouter.get("/", async (request, response, next) => {
@@ -39,9 +40,9 @@ blogsRouter.post(
     const token = request.token;
 
     // get user from request object
-    const user = request.user;
+    // const user = request.user;
 
-    console.log("User id from request.user", user);
+    console.log("body", body);
 
     const decodedToken = jwt.verify(token, process.env.SECRET);
     if (!decodedToken.id) {
@@ -49,6 +50,9 @@ blogsRouter.post(
     }
 
     const findUser = await User.findById(decodedToken.id);
+    const findComment = await Comment.findById();
+
+    // console.log(findComment);
 
     const blog = new Blog({
       title: body.title,
